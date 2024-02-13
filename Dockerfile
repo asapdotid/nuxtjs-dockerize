@@ -1,4 +1,4 @@
-# Stage 1: install dependencies
+# Stage 1: Setup Base Image
 FROM node:20-alpine AS base
 ARG NODE_ENV production
 ENV NODE_ENV $NODE_ENV
@@ -6,18 +6,19 @@ WORKDIR /app
 RUN corepack enable && \
     corepack prepare pnpm@latest-8 --activate
 
+# Stage 2: Install Dependencies
 FROM base AS install
 RUN pnpm config set store-dir .pnpm-store
 COPY package.json pnpm-lock.yaml .npmrc ./
 RUN pnpm install --frozen-lockfile --ignore-scripts
 
-# Stage 2: build
+# Stage 3: Build Application
 FROM base AS builder
 COPY --from=install /app/node_modules ./node_modules
 COPY . .
 RUN pnpm run build:production
 
-# Stage 3: run
+# Stage 3: Release Image Application
 FROM oven/bun:1-alpine
 WORKDIR /app
 COPY --chown=bun:bun --from=builder /app/.output .
@@ -27,8 +28,8 @@ USER bun
 EXPOSE 3000/tcp
 # Get Host from environment variable
 # This is used to allow the container to be run on any host
-ENV NUXT_HOST=0.0.0.0
 ENV HOST 0.0.0.0
+ENV NUXT_HOST=0.0.0.0
 # Adjusted command to directly run the server in production
 # Following Nuxt's recommendation for production deployments
 # Use ENTRYPOINT to ensure the environment variable is evaluated
