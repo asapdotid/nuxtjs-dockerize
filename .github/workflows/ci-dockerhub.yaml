@@ -49,10 +49,10 @@ jobs:
             type=ref,enable=true,priority=600,prefix=,suffix=,event=tag
             # pull request event
             type=ref,enable=true,priority=600,prefix=pr-,suffix=,event=pr
-        labels: |
-          org.opencontainers.image.title=NuxtJs Dockerize
-          org.opencontainers.image.description=NuxtJs Dockerize Image
-          org.opencontainers.image.vendor=Jogjascript
+          labels: |
+            org.opencontainers.image.title=NuxtJs Dockerize
+            org.opencontainers.image.description=NuxtJs Dockerize Image
+            org.opencontainers.image.vendor=Jogjascript
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
