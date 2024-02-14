@@ -11,7 +11,6 @@ on: # yamllint disable-line rule:truthy
       - "main"
 
 env:
-  DOCKER_REGISTRY: docker.io
   DOCKER_NAMESPACE: ${{ secrets.DOCKERHUB_USERNAME }}
   DOCKER_IMAGE_NAME: nuxtjs-test
 
@@ -41,7 +40,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.DOCKER_NAMESPACE }}/${{ env.DOCKER_NAMESPACE }}/${{ env.DOCKER_IMAGE_NAME }}
+          images: ${{ env.DOCKER_NAMESPACE }}/${{ env.DOCKER_IMAGE_NAME }}
           tags: |
             # branch event
             type=ref,enable=true,priority=600,prefix=,suffix=,event=branch
@@ -50,6 +49,7 @@ jobs:
             # pull request event
             type=ref,enable=true,priority=600,prefix=pr-,suffix=,event=pr
           labels: |
+            maintainer=Asapdotid <asapdotid@gmail.com>
             org.opencontainers.image.title=NuxtJs Dockerize
             org.opencontainers.image.description=NuxtJs Dockerize Image
             org.opencontainers.image.vendor=Jogjascript
