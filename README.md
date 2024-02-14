@@ -4,8 +4,10 @@ Initial setup NuxtJs for docker image.
 
 Docker image can find on Docker Hub: `asapdotid/nuxtjs-test:latest` multi platform `linux/amd64` & `linux/arm64`
 
-- linux/amd64 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/asapdotid/nuxtjs-test/latest?arch=amd64&style=flat-square&logo=docker)
-- linux/arm64 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/asapdotid/nuxtjs-test/latest?arch=arm64&style=flat-square&logo=docker)
+| No   |      Platform      |  Size |
+| :----: | :--------- | :-------- |
+| 1 | linux/amd64 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/asapdotid/nuxtjs-test/latest?arch=amd64&style=flat-square&logo=docker) |
+| 2 | linux/arm64 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/asapdotid/nuxtjs-test/latest?arch=arm64&style=flat-square&logo=docker) |
 
 Test running
 

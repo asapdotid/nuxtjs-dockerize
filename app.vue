@@ -1,10 +1,11 @@
 <script setup lang="ts">
 const version = 2 + 1
+const date = new Date()
 </script>
 
 <template>
   <div class="hello">
-    Hello Nuxt {{ version }}!
+    Hello Nuxt {{ version }}, on Cloud Run at {{ date }}
   </div>
 </template>
 
