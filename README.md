@@ -18,7 +18,7 @@ docker run -it -p 3000:3000 asapdotid/nuxtjs-test:latest
 Config Docker Image Build:
 
 - [x] Manual build
-- [ ] Github Workflows
+- [x] Github Workflows
 - [ ] Google Cloud Build
 
 Config Application
