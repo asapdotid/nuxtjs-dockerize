@@ -6,7 +6,7 @@ on:
       - "main"
 
 env:
-  REGISTRY_IMAGE: ${{ github.actor }}/nodejs-test
+  REGISTRY_IMAGE: ${{ github.actor }}/nuxtjs-test
 
 jobs:
   build:
@@ -40,7 +40,6 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: src/node/20/Dockerfile-nuxt
           platforms: ${{ matrix.platform }}
           labels: ${{ steps.meta.outputs.labels }}
           provenance: true
