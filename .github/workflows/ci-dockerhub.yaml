@@ -37,13 +37,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.DOCKER_NAMESPACE }}/${{ env.DOCKER_IMAGE_NAME }}
-          tags: |
-            # branch event
-            type=ref,enable=true,priority=600,prefix=,suffix=,event=branch
-            # tag event
-            type=ref,enable=true,priority=600,prefix=,suffix=,event=tag
-            # pull request event
-            type=ref,enable=true,priority=600,prefix=pr-,suffix=,event=pr
+          tags: "latest"
           labels: |
             maintainer=Asapdotid <asapdotid@gmail.com>
             org.opencontainers.image.title=NuxtJs Dockerize
@@ -100,13 +94,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.DOCKER_NAMESPACE }}/${{ env.DOCKER_IMAGE_NAME }}
-          tags: |
-            # branch event
-            type=ref,enable=true,priority=600,prefix=,suffix=,event=branch
-            # tag event
-            type=ref,enable=true,priority=600,prefix=,suffix=,event=tag
-            # pull request event
-            type=ref,enable=true,priority=600,prefix=pr-,suffix=,event=pr
+          tags: "latest"
           labels: |
             maintainer=Asapdotid <asapdotid@gmail.com>
             org.opencontainers.image.title=NuxtJs Dockerize
