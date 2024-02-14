@@ -18,12 +18,13 @@ COPY --from=install /app/node_modules ./node_modules
 COPY . .
 RUN pnpm run build:production
 
-# Stage 3: Release Image Application
+# Stage 4: Release Image Application
 FROM oven/bun:1-alpine
 WORKDIR /app
-COPY --chown=bun:bun --from=builder /app/.output .
+RUN apk --no-cache add dumb-init=~1.2.5
 # Ensure the container runs as a non-root user
 USER bun
+COPY --chown=bun:bun --from=builder /app/.output .
 # Expose the port your app runs on
 EXPOSE 3000/tcp
 # Get Host from environment variable
@@ -33,4 +34,5 @@ ENV NUXT_HOST=0.0.0.0
 # Adjusted command to directly run the server in production
 # Following Nuxt's recommendation for production deployments
 # Use ENTRYPOINT to ensure the environment variable is evaluated
-ENTRYPOINT ["sh", "-c", "bun run server/index.mjs --host $NUXT_HOST"]
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
+CMD ["sh", "-c", "bun run server/index.mjs --host $NUXT_HOST"]
