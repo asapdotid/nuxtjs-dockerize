@@ -40,8 +40,9 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: src/node/20/Dockerfile-slim
+          file: ./Dockerfile
           platforms: ${{ matrix.platform }}
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           provenance: true
           sbom: true
